@@ -19,6 +19,9 @@ class ItemModel(db.Model):
     def json(self):
         return {'name': self.name, 'price': self.price, 'store_id': self.store_id}
 
+    def json_without_store_id(self):
+        return {'name': self.name, 'price': self.price}
+
     @classmethod
     def find_by_name(cls, name):
         return cls.query.filter_by(name=name).first()
